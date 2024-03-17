@@ -39,6 +39,7 @@ export class AppComponent {
   }
 
   clear() {
+    this.printbill = false;
     this.sign.clear();
   }
 
