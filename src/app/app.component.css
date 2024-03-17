@@ -1,0 +1,9 @@
+signature-pad {
+  border: none;
+  background-color: inherit;
+  width: max-content;
+}
+
+canvas.signature-pad-canvas{
+  border: none;
+}
