@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
 signature-pad {
   border: none;
   background-color: inherit;
@@ -7,3 +10,152 @@ signature-pad {
 canvas.signature-pad-canvas{
   border: none;
 }
+
+:host {
+  --input-bg-color: #002b1e;
+  --input-border: #868686;
+  --input-border_hv_fc: goldenrod;
+  --input-box-shadow: #ffb8058f; /* v#42424278 */
+  --bg-color: rgb(0, 73, 51);
+  --heading-color: goldenrod;
+  --font-color: white;
+  --bill-bg-color: #eeeeee;
+}
+
+.container-fluid {
+  width: 100vw;
+  height: 100vh;
+  overflow: scroll;
+  overflow-x: hidden;
+  padding: 1rem 0;
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--font-color);
+}
+
+.row {
+  width: 100%;
+  height: 100%;
+  padding: 0.5rem;
+  margin: 0;
+  justify-content: center;
+}
+
+.form-container {
+  width: 100%;
+  margin-top: 6rem;
+  margin-bottom: 5rem;
+}
+
+.heading {
+  color: var(--heading-color);
+  font-weight: 600;
+}
+
+.bill-page {
+  background-color: var(--bill-bg-color);
+  color: var(--bg-color);
+  width: 100%;
+  height: max-content;
+}
+
+.logo {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.bill-logo
+{
+  width: 100%;
+}
+
+.display-2 {
+  font-weight: 600;
+}
+
+.bill-detail1, .bill-detail2, .bill-detail3, .bill-detail4, .bill-detail5, .bill-detail6,
+.bill-detail7, .bill-detail8, .bill-detail9, .bill-detail10 {
+  font-size: 0.75rem;
+  color: var(--bg-color);
+  font-weight: 600;
+}
+
+.bill-detail2 {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  color: var(--input-border);
+}
+
+.bill-detail3 span{
+  display: inline-block;
+  width: calc(100% / 3);
+}
+
+.bill-detail3 .space{
+  width: 100%;
+  height: 3rem;
+}
+
+.bill-detail4, .bill-detail5, .bill-detail6 {
+  font-size: 0.75rem;
+  color: var(--bg-color);
+  font-weight: 600;
+}
+
+
+
+th,
+td {
+  background-color: transparent;
+}
+
+td {
+  height: 110px;
+}
+
+.bill-detail6 table .table-items {
+  height: max-content;
+  /* border: 1px solid #808080; */
+}
+
+.details tr,
+.details tr th,
+.details tr td {
+  border: none;
+}
+
+
+
+
+
+
+
+
+
+
+/* print-styles.css */
+@page {
+  size: A4;
+  margin-left: 5rem;
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  #divToPrint, #divToPrint * {
+    visibility: visible;
+  }
+
+  /* #divToPrint {
+    position: absolute;
+    left: 0;
+    top: 0;
+  } */
+}
+

@@ -1,4 +1,4 @@
-<div #divToPrint>
+<!-- <div #divToPrint>
 
   <signature-pad #sign *ngIf="!printbill">
 
@@ -8,5 +8,242 @@
 </div>
 
 <button (click)="printDiv()">print</button>
+<button (click)="convertToPDF()">docs</button>
+<button (click)="clear()">clear</button> -->
 
-<button (click)="clear()">clear</button>
+
+<!-- <p>generatebill-invoice works!</p> -->
+<!-- <p>detailbill-invoice works!</p> -->
+<!-- <p>create-invoice works!</p> -->
+<!-- <p>detailbill-invoice works!</p> -->
+<div class="container-fluid p-0 justify-content-center">
+  <div class="row">
+
+    <div class="form-container col-11">
+
+      <div class="heading display-2 ms-1">
+        <i class="bi-receipt"></i> Bill
+      </div>
+      <div #divToPrint class="bill-page row mt-5">
+        <!-- section 1 ------------------------------------------------------------------------- -->
+        <div class="col-12 logo p-2">
+          <img class="bill-logo" src="../assets/images/bill-logo.png" alt="Wagheshwari Gold">
+        </div>
+
+        <!-- section 2 ------------------------------------------------------------------------- -->
+        <!-- <div class="bill-detail col-7 p-2">
+          <span class="display-2">Invoice</span>
+        </div>
+
+        <div class="bill-detail2 col-4 p-2 align-items-end">
+          <span></span>
+        </div>
+
+        <div class="bill-detail1 col-7 p-2">
+          <span>Prop. MANISH ARVIND SONI (PATADIYA)</span><br>
+          <span>Mob.: 8390916916</span><br>
+          <span>GSTIN: 23456789fghjkl</span>
+        </div>
+
+        <div class="bill-detail3 col-4 p-2">
+          <span>State</span>
+          <span>2</span>
+          <span>7</span>
+          <span class="space"></span>
+        </div> -->
+
+        <!-- section 3 ------------------------------------------------------------------------- -->
+        <!-- <div class="bill-detail4 col-4 p-2 align-items-end">
+          <p>Invoice No : <br>
+            12345</p>
+        </div>
+        <div class="bill-detail5 col-3 p-2">
+          <p>Invoice Date : <br>
+            1/1/2024</p>
+        </div>
+        <div class="bill-detail6 col-4 p-2">
+          <p>Voucher No : <br>
+            12345</p>
+        </div> -->
+
+        <!-- section 4 ------------------------------------------------------------------------- -->
+        <div class="bill-detail6 col-11 p-0 align-items-end">
+
+          <table class="table border-dark">
+            <thead class="details">
+              <tr>
+                <th class="ps-0" colspan="5">
+                  <div class="bill-detail">
+                    <span class="display-2">Invoice</span>
+                  </div>
+                </th>
+                <th class="ps-0" colspan="2">
+                  <span></span>
+                </th>
+              </tr>
+              <tr>
+                <th class="ps-0" colspan="5">
+                  <div class="bill-detail1">
+                    <span>Prop. MANISH ARVIND SONI (PATADIYA)</span><br>
+                    <span>Mob.: 8390916916</span><br>
+                    <span>GSTIN: 23456789fghjkl</span><br>
+                    <span style="color: transparent;">..</span>
+                  </div>
+                </th>
+                <th class="ps-0" colspan="2">
+                  <div class="bill-detail3">
+                    <span>State</span>
+                    <span>2</span>
+                    <span>7</span>
+                    <span class="space"></span>
+                  </div>
+                </th>
+              </tr>
+              <tr>
+                <th class="ps-0" colspan="2">
+                  <div class="bill-detail4">
+                    <p>Invoice No : 12345</p>
+                  </div>
+                </th>
+                <th class="ps-0" colspan="3">
+                  <div class="bill-detail5">
+                    <p>Invoice Date : 1/1/2024</p>
+                  </div>
+                </th>
+                <th class="ps-0" colspan="2">
+                  <div class="bill-detail6">
+                    <p>Voucher No : 12345</p>
+                  </div>
+                </th>
+              </tr>
+            </thead>
+            <thead>
+              <tr>
+                <th scope="col">Sr.No.</th>
+                <th scope="col">Description</th>
+                <th scope="col">HSN/SAC</th>
+                <th scope="col">Gross Wt</th>
+                <th scope="col">Net Wt</th>
+                <th scope="col">Labour Rate</th>
+                <th scope="col">Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td scope="row">1</td>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>abcde</td>
+                <td>12345</td>
+                <td>12345</td>
+                <td>12345</td>
+              </tr>
+              <tr>
+                <td colspan="4" rowspan="7">
+                  <span>Bank Details : <br>For RTGS and NEFT Favouring Manish Arvind Soni (PATADIYA) </span>
+                  <br><br>
+                  <span>Bank of India. 181, Budhwar Peth, Pune-411002</span>
+                  <br><br>
+                  <span>A/C NO.: 23456789012 | IFSC No.: 1234567890</span>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" class="table-items">Sub Total</td>
+                <td class="table-items">55000</td>
+              </tr>
+              <tr>
+                <td colspan="2" class="table-items">Other Charges</td>
+                <td class="table-items">0</td>
+              </tr>
+              <tr>
+                <td colspan="2" class="table-items">Taxable Amount</td>
+                <td class="table-items">0</td>
+              </tr>
+              <tr>
+                <td colspan="2" class="table-items">CGST (2.50 %)</td>
+                <td class="table-items">0 </td>
+              </tr>
+              <tr>
+                <td colspan="2" class="table-items">SGST (2.50 %)</td>
+                <td class="table-items">0 </td>
+              </tr>
+              <tr>
+                <td colspan="2" class="table-items">IGST</td>
+                <td class="table-items">0 </td>
+              </tr>
+
+
+
+            </tbody>
+
+            <tbody class="details">
+              <tr style="border: none;">
+                <td  style="border: none;" colspan="7" class="table-items">
+                  <div class="bill-detail9 text-end">
+                    <p class="display-4">Invoice Total : 60000</p>
+                  </div>
+                </td>
+              </tr>
+
+              <tr style="border: none;">
+                <td  style="border: none;" colspan="4" class="table-items">
+                  <div class="bill-detail9">
+                    <p>Recieved By : <br>
+                      <signature-pad #sign *ngIf="!printbill">
+
+                      </signature-pad>
+                      <img *ngIf="printbill" [src]="this.image.src" alt="">
+                    </p>
+
+                  </div>
+                </td>
+                <td  style="border: none;" colspan="3" class="table-items">
+                  <div class="bill-detail10">
+                    <p>For Wagheshwari Gold & Co.  <br>
+                      <signature-pad #sign1 *ngIf="!printbill">
+
+                      </signature-pad>
+
+                      <img *ngIf="printbill" [src]="this.image1.src" alt="">
+                      <br>
+                      Prop. MANISH ARVIND SONI (PATADIYA)</p>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+
+        <!-- section 5 ------------------------------------------------------------------------- -->
+        <!-- <div class="bill-detail9 col-11 p-2 text-end">
+          <p class="display-4">Invoice Total : 60000</p>
+        </div> -->
+
+        <!-- section 6 ------------------------------------------------------------------------- -->
+        <!-- <div class="bill-detail9 col-6 p-2">
+          <p>Recieved By</p>
+        </div>
+
+        <div class="bill-detail10 col-5 p-2">
+          <p>For Wagheshwari Gold & Co.  <br>
+            Prop. MANISH ARVIND SONI (PATADIYA)</p>
+        </div> -->
+
+
+      </div>
+
+      <button class="col-12 m-4 mb-5 ms-0 btn btn-success" (click)="convertToPDF()">Print</button>
+      <button class="col-12 m-4 mb-5 ms-0 btn btn-success" (click)="generatePDF()">Print</button>
+
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+
+
