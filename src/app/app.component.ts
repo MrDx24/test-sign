@@ -1,10 +1,9 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { AngularSignaturePadModule, SignaturePadComponent } from '@almothafar/angular-signature-pad';
+import { AngularSignaturePadModule, NgSignaturePadOptions, SignaturePadComponent } from '@almothafar/angular-signature-pad';
 import { CommonModule } from '@angular/common';
-// @ts-ignore
-import html2pdf from 'html2pdf.js';
-import jsPDF from 'jspdf';
+import {jsPDF} from 'jspdf';
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-root',
@@ -20,81 +19,20 @@ export class AppComponent {
   printbill:boolean = false;
   value:any
 
+  signaturePadOptions: NgSignaturePadOptions = {
+    canvasWidth: 210,
+    canvasHeight: 110
+  };
+
   image = new Image();
   image1 = new Image();
 
+  // @ViewChild('divToPrint') content!: ElementRef;
   @ViewChild('divToPrint', { static: false }) divToPrint!: ElementRef;
   @ViewChild('sign', { static: false }) sign!: SignaturePadComponent;
   @ViewChild('sign1', { static: false }) sign1!: SignaturePadComponent;
 
   constructor() { }
-
-  @ViewChild('divToPrint') content!: ElementRef;
-
-
-  generatePDF(): void {
-
-    this.done();
-    const DATA = this.content.nativeElement;
-    const doc: jsPDF = new jsPDF({ unit: 'in', format: 'A4', orientation: 'portrait'});
-    doc.html(DATA, {
-       callback: (doc) => {
-         doc.output("dataurlnewwindow",{"filename" : "sample"});
-       }
-    });
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  convertToPDF() {
-    this.done();
-    const element = this.content.nativeElement;
-    const opt = {
-      margin: [-0.6,0,0,0],
-      filename: 'my_document.pdf',
-      image: { type: 'png', quality: 0.98 },
-      html2canvas: { scale: 2 },
-      jsPDF: { unit: 'in', format: 'A4', orientation: 'portrait', pyPDFEmbedFont:true }
-    };
-
-    // html2pdf().from(element).set(opt).output("dataurlnewwindow",{"filename" : "sample"});
-    html2pdf().from(element).set(opt).outputPdf('datauristring');
-  }
-
-
-  printDiv() {
-
-
-    this.done();
-    // setTimeout(() => {
-    //   let printContents = this.divToPrint.nativeElement.innerHTML;
-    //   let originalContents = document.body.innerHTML;
-    //   document.body.innerHTML = printContents;
-    //   window.print();
-    //   document.body.innerHTML = originalContents;
-    // }, 1);
-  }
-
 
   clear() {
     this.printbill = false;
@@ -113,6 +51,36 @@ export class AppComponent {
   }
 
   docs() {
+    this.done();
+    // const data: HTMLElement = document.getElementById('divToPrint') as HTMLElement;
+    const data: HTMLElement = this.divToPrint.nativeElement;
+    setTimeout(() => {
+      html2canvas(data).then((canvas) => {
 
+        const imgData = canvas.toDataURL('image/png');
+
+
+        // Create a new jsPDF instance
+        const pdf = new jsPDF({orientation: 'portrait'});
+
+        // Add the canvas image as a new page to the PDF
+        const imgProps = pdf.getImageProperties(imgData);
+        const pdfWidth = pdf.internal.pageSize.getWidth();
+        const pdfHeight = (imgProps.height * (pdfWidth-52)) / (imgProps.width-100);
+        console.log(imgProps.height, " : " , imgProps.width , " : ", pdfWidth, " : ", pdfHeight);
+
+        pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+
+        // Save the PDF
+        pdf.save('t.pdf');
+        // console.log(pdf.output('datauristring')); /
+      }).catch(error => {
+        console.error('Error generating PDF:', error);
+      });
+    }, 200);
   }
+
 }
+
+
+

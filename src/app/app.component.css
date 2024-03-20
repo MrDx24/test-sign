@@ -1,16 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 
-signature-pad {
-  border: none;
-  background-color: inherit;
-  width: max-content;
-}
-
-canvas.signature-pad-canvas{
-  border: none;
-}
-
 :host {
   --input-bg-color: #002b1e;
   --input-border: #868686;
@@ -20,6 +10,22 @@ canvas.signature-pad-canvas{
   --heading-color: goldenrod;
   --font-color: white;
   --bill-bg-color: #eeeeee;
+}
+
+signature-pad {
+  border: none;
+  background-color: inherit;
+  width: 150px;
+  margin: 10px 0 0 30px;
+}
+
+canvas.signature-pad-canvas{
+  margin: 20px;
+}
+
+canvas.signature-pad-canvas {
+  width: 200px !important;
+  margin-left: 20px !important;
 }
 
 .container-fluid {
@@ -54,7 +60,7 @@ canvas.signature-pad-canvas{
 }
 
 .bill-page {
-  background-color: var(--bill-bg-color);
+  background-color: var(--font-color);
   color: var(--bg-color);
   width: 100%;
   height: max-content;
@@ -129,7 +135,9 @@ td {
 }
 
 
-
+.table-items {
+  height: max-content;
+}
 
 
 
